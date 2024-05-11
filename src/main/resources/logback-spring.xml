@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="LogToConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread{10}] %logger{0}\(%line\) - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.transaction.jta.JtaTransactionManager" level="info"/>
+
+    <logger name="com.atomikos.jdbc.AtomikosDataSourceBean" level="info"/>
+    <logger name="com.atomikos.jdbc.AbstractDataSourceBean" level="info"/>
+    <logger name="com.atomikos.jdbc.AtomikosConnectionProxy" level="info"/>
+    <logger name="com.atomikos.icatch.imp.CompositeTransactionImp" level="info"/>
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <property name="hibernate.show_sql" value="true"/>
+        <property name="properties.hibernate.format_sql" value="true"/>
+        <appender-ref ref="SQLConsoleAppender"/>
+    </logger>
+    <root level="info">
+        <appender-ref ref="LogToConsole"/>
+    </root>
+</configuration>
